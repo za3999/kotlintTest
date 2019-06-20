@@ -40,6 +40,7 @@ open class Test(var context: Context, var name: String, var number: Int) {
 
     open fun hello() {
         Toast.makeText(context, "Hello $name$number$sex", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "test1", Toast.LENGTH_SHORT).show()
     }
 }
 
