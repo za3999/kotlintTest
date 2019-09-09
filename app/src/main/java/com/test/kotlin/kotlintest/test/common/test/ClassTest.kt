@@ -58,32 +58,6 @@ class ClassTest {
             site.url = "www.google.com"
             site.key = "test key 2"
             Log.d(Constants.TAG, "site  ${site.name},${site.url}, ${site.key}")
-
-            var closure = testClosure()
-            Log.d(Constants.TAG, "test a :${closure()}")
-            Log.d(Constants.TAG, "test a :${closure()}")
-            Log.d(Constants.TAG, "test a :${closure()}")
-            action(closure(), 4) { first: Int, second: Int ->
-                Log.d(Constants.TAG, "action callback first is $first,$second")
-                first == second
-            }
-            action(closure(), 4) { first: Int, second: Int ->
-                Log.d(Constants.TAG, "action callback first:$first,second:$second")
-                first == second
-            }
-        }
-
-        private inline fun action(first: Int, second: Int, callback: (Int, Int) -> Boolean): Boolean {
-            var result = callback(first, second)
-            Log.d(Constants.TAG, "action result:$result")
-            return result
-        }
-
-        private fun testClosure(): () -> Int {
-            var a = 0
-            return fun(): Int {
-                return ++a
-            }
         }
 
         private fun lazyExample(user: User) {

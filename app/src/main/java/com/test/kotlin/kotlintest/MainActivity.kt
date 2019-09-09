@@ -11,6 +11,7 @@ import com.test.kotlin.kotlintest.test.common.KotlinUtil
 import com.test.kotlin.kotlintest.test.common.extend
 import com.test.kotlin.kotlintest.test.common.test.CirculationTest
 import com.test.kotlin.kotlintest.test.common.test.ClassTest
+import com.test.kotlin.kotlintest.test.common.test.ClosureTest
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         classTest.setOnClickListener {
             ClassTest.test()
             ClassTest.extend()
+        }
+
+        closureTest.setOnClickListener {
+            ClosureTest.test()
         }
     }
 }
