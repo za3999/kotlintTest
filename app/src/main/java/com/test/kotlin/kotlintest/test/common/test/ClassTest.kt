@@ -9,9 +9,13 @@ class ClassTest {
 
     companion object {
         fun test() {
-            var c = C("test")
+            var c = C("tesct")
             c.reName = "reName"
             c.method()
+            var d = D("12345", "testD", 25)
+            d.method()
+            var e = E("testE", 20)
+            e.method()
 
             /*******extend*******/
             Log.d(Constants.TAG, " lastIndex ${c.reName}")

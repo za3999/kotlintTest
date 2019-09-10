@@ -26,7 +26,7 @@ fun Any?.toTest(): String {
 }
 
 inline fun <reified T : Any> T.description() = this.javaClass.kotlin.memberProperties.joinToString(";") {
-    "${it.name}: ${it.get(this@description)}"
+    "${it.name}: ${it.get(this)}"
 }
 
 fun <T, R> KProperty1<T, R>.getUnsafed(receiver: Any): R {
@@ -34,5 +34,5 @@ fun <T, R> KProperty1<T, R>.getUnsafed(receiver: Any): R {
 }
 
 inline fun <reified T : Any> T.description1() = this::class.memberProperties.joinToString(";") {
-    "${it.name}: ${it.getUnsafed(this@description1)}"
+    "${it.name}: ${it.getUnsafed(this)}"
 }
