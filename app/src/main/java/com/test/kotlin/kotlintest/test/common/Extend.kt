@@ -1,7 +1,7 @@
 package com.test.kotlin.kotlintest.test.common
 
 import android.util.Log
-import com.test.kotlin.kotlintest.test.common.test.C
+import com.test.kotlin.kotlintest.test.common.test.bean.C
 import com.test.kotlin.kotlintest.test.common.test.ClassTest
 import kotlin.reflect.KProperty1
 import kotlin.reflect.full.memberProperties

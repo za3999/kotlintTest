@@ -1,7 +1,8 @@
-package com.test.kotlin.kotlintest.test.common.test
+package com.test.kotlin.kotlintest.test.common.test.bean
 
 import android.util.Log
 import com.test.kotlin.kotlintest.test.common.Constants
+import com.test.kotlin.kotlintest.test.common.test.bean.C
 
 class D(var number: String, name: String) : C(name) {
 
