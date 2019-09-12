@@ -12,6 +12,7 @@ import com.test.kotlin.kotlintest.test.common.extend
 import com.test.kotlin.kotlintest.test.common.test.CirculationTest
 import com.test.kotlin.kotlintest.test.common.test.ClassTest
 import com.test.kotlin.kotlintest.test.common.test.ClosureTest
+import com.test.kotlin.kotlintest.test.common.test.KeywordTest
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         hello.setOnClickListener {
             KotlinUtil.test(this)
         }
+
         rotationIv.setOnClickListener {
             it.animate().rotation(if (isPositive) {
                 90f
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             }).setDuration(200).setInterpolator(OvershootInterpolator()).start()
             isPositive = !isPositive
         }
-        rotationIv.visibility = View.GONE
+
         circulationTest.setOnClickListener {
             val mList: List<String> = listOf("aaa", "ccccc", "bbbbb", "ddddd")
             CirculationTest.test(mList)
@@ -47,6 +49,10 @@ class MainActivity : AppCompatActivity() {
 
         closureTest.setOnClickListener {
             ClosureTest.test()
+        }
+
+        keywordTest.setOnClickListener {
+            KeywordTest.test()
         }
     }
 }

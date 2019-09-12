@@ -12,7 +12,14 @@ class ClassTest {
             var c = C("tesct")
             c.reName = "reName"
             c.method()
+            var letTest = c?.let {
+                Log.d(Constants.TAG, " let test: ${c.name}")
+                "success"
+            }
+            Log.d(Constants.TAG, " letTest return: $letTest")
+            c?.run { Log.d(Constants.TAG, " run test: $name") }
             var d = D("12345", "testD", 25)
+            d.reName = "reName D"
             d.method()
             var e = E("testE", 20)
             e.method()
@@ -31,9 +38,12 @@ class ClassTest {
             user.temp = "22222"
             val olderUser = user.copy(age = 2)
             Log.d(Constants.TAG, " user$user,olderUser$olderUser")
+
             var student = Student("郑小才", 19, 0)
+            with(student) { Log.d(Constants.TAG, "with test: $name,$age,$sex") }
             val (name, age, sex) = student
-            Log.d(Constants.TAG, " $name,$age,$sex")
+            Log.d(Constants.TAG, "val test: $name,$age,$sex")
+
             lazyExample(user)
             lazyExample(user)
             Log.d(Constants.TAG, "description: ${user.description1()}")

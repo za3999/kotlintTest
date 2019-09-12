@@ -17,6 +17,8 @@ interface B {
 
 open class C(var name: String) : A(), B {
 
+    open var sex: String = "c sex"
+
     override fun method() {
         super<A>.method()
         super<B>.method()
