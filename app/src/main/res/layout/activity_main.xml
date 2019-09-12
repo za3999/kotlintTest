@@ -52,6 +52,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="keywordTest" />
+
+        <TextView
+            android:id="@+id/javaTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="javaTest" />
     </LinearLayout>
 </ScrollView>
 
