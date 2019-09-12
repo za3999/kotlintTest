@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         keywordTest.setOnClickListener {
-            KeywordTest.test()
+            KeywordTest.test(this@MainActivity)
         }
 
         javaTest.setOnClickListener {
