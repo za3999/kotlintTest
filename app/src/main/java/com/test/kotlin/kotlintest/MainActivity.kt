@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import com.test.kotlin.kotlintest.test.common.Constants
-import com.test.kotlin.kotlintest.test.common.KotlinUtil
 import com.test.kotlin.kotlintest.test.common.extend
 import com.test.kotlin.kotlintest.test.common.test.CirculationTest
 import com.test.kotlin.kotlintest.test.common.test.ClassTest
@@ -15,7 +14,6 @@ import com.test.kotlin.kotlintest.test.common.test.ClosureTest
 import com.test.kotlin.kotlintest.test.common.test.KeywordTest
 import com.test.kotlin.kotlintest.test.common.test.java.JavaTest
 import com.test.kotlin.kotlintest.test.common.test.java.JavaUser
-import com.test.kotlin.kotlintest.test.common.toTest
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,10 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val test = Person(this, Constants.PACKAGE_NAME + "小王", 1234)
         test.sex = "男"
-        hello.setOnClickListener {
-            KotlinUtil.test(this)
-        }
-
         rotationIv.setOnClickListener {
             it.animate().rotation(if (isPositive) {
                 90f
@@ -55,15 +49,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         keywordTest.setOnClickListener {
-            KeywordTest.test(this@MainActivity)
+            KeywordTest.test(it.context)
         }
 
         javaTest.setOnClickListener {
             var user = JavaUser("caifu", 5)
-            user?.run {
+            user.run {
                 Log.d(Constants.TAG, "test java 2 kotlin : $name,$age")
             }
             JavaTest().test()
+        }
+
+        koinTest.setOnClickListener {
         }
     }
 }
