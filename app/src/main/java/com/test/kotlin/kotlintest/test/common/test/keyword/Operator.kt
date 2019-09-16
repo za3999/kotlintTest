@@ -9,6 +9,7 @@ class Operator {
 
     companion object {
         fun test(context: Context) {
+            Log.d(Constants.TAG, "************** Operator **************")
             var mGuideEnable by PreferenceProxy(context, "guide_enable", false)
             var testGuideEnable by PreferenceProxy(context, "guide_enable", false)
             mGuideEnable = true

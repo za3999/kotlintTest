@@ -12,11 +12,12 @@ class Suspend {
 
     companion object {
         fun test() {
-//            Suspend().testCancel()
-//            Suspend().testTimeOut()
-//            Suspend().testContext()
-//            Suspend().testWithContext()
-//            Suspend().testAsync()
+            Log.d(Constants.TAG, "************** Suspend **************")
+            Suspend().testCancel()
+            Suspend().testTimeOut()
+            Suspend().testContext()
+            Suspend().testWithContext()
+            Suspend().testAsync()
             Suspend().testSuspendAsync()
         }
     }
@@ -53,7 +54,7 @@ class Suspend {
         }
     }
 
-//    CommonPool协程调度器使用的是ForkJoinPool线程池。
+    //    CommonPool协程调度器使用的是ForkJoinPool线程池。
 //    Unconfined协程调度器是一种无限制上下文，协程会在当前调用栈中执行直到第一次挂起。恢复运行后线程由被调用的挂起函数决定。
 //    当协程没有耗费CPU时间或者没有更新任何局限在特定线程内的共享数据（例如 UI），无限制的调度器是合适的。
 //    coroutineContext继承父调用器的协程调度器，这里由于runBlocking的协程调度器EmptyCoroutineContext运行在主线程，所以结果返回的线程也是在主线程
@@ -129,4 +130,5 @@ class Suspend {
         }
         callback(job.await())
     }
+
 }

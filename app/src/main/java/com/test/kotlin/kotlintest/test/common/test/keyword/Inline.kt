@@ -8,6 +8,7 @@ class Inline {
 
     companion object {
         fun test() {
+            Log.d(Constants.TAG, "************** Inline **************")
             var inline = Inline()
             inline.outerFun()
             inline.reifiedFun()
