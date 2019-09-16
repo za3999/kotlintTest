@@ -39,7 +39,7 @@ class ClassTest {
             val olderUser = user.copy(age = 2)
             Log.d(Constants.TAG, " user$user,olderUser$olderUser")
 
-            var student = Student("郑小才", 19, 0)
+            var student = Student("郑小才")
             with(student) { Log.d(Constants.TAG, "with test: $name,$age,$sex") }
             val (name, age, sex) = student
             Log.d(Constants.TAG, "val test: $name,$age,$sex")
@@ -72,6 +72,9 @@ class ClassTest {
             site.url = "www.google.com"
             site.key = "test key 2"
             Log.d(Constants.TAG, "site  ${site.name},${site.url}, ${site.key}")
+
+            SimpleSingleton.test()
+            LazySingleton.instance.test()
         }
 
         private fun lazyExample(user: User) {
