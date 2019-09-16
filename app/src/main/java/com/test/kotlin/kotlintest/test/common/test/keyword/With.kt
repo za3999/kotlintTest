@@ -28,11 +28,23 @@ class With {
             User("郑小才", 19).testApply {
                 Log.d(Constants.TAG, "testApply:$name,$age")
             }
+            var result1 = User("郑小才", 19).testBlockReturn {
+                "aaa"
+            }
+            Log.d(Constants.TAG, "result1:$result1")
+            var result2 = User("郑小才", 19).testBlockReturn {
+                111
+            }
+            Log.d(Constants.TAG, "result2:$result2")
         }
 
         private fun <T> T.testApply(block: T.() -> Unit): T {
             block()
             return this
+        }
+
+        private fun <T, R> T.testBlockReturn(block: (T) -> R): R {
+            return block(this)
         }
     }
 
@@ -48,4 +60,5 @@ class With {
     inline fun <T> testLet(receiver: T, block: (T) -> Unit) {
         block(receiver)
     }
+
 }
