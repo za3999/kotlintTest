@@ -8,10 +8,7 @@ import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import com.test.kotlin.kotlintest.test.common.Constants
 import com.test.kotlin.kotlintest.test.common.extend
-import com.test.kotlin.kotlintest.test.common.test.CirculationTest
-import com.test.kotlin.kotlintest.test.common.test.ClassTest
-import com.test.kotlin.kotlintest.test.common.test.ClosureTest
-import com.test.kotlin.kotlintest.test.common.test.KeywordTest
+import com.test.kotlin.kotlintest.test.common.test.*
 import com.test.kotlin.kotlintest.test.common.test.java.JavaTest
 import com.test.kotlin.kotlintest.test.common.test.java.JavaUser
 import kotlinx.android.synthetic.main.activity_main.*
@@ -61,6 +58,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         koinTest.setOnClickListener {
+        }
+
+        genericityTest.setOnClickListener {
+            GenericityTest.test()
         }
     }
 }

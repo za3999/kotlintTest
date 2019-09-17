@@ -66,6 +66,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="koinTest" />
+
+        <TextView
+            android:id="@+id/genericityTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="genericityTest" />
     </LinearLayout>
 </ScrollView>
 

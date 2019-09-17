@@ -9,7 +9,11 @@ import kotlin.properties.Delegates
 
 @SuppressLint("ParcelCreator")
 @Parcelize
-data class User(var name: String, var age: Int) : Parcelable {
+data class User(var name: String, var age: Int) : Parcelable, Comparable<User> {
+
+    override fun compareTo(other: User): Int {
+        return age - other.age
+    }
 
     var temp: String by Delegates.observable("初始值") { prop, old, new ->
         Log.d(Constants.TAG, "旧值：$old -> 新值：$new")
