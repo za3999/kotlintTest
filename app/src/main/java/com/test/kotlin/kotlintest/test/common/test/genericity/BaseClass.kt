@@ -49,7 +49,7 @@ class InAnimaBox<in T>(private val elements: MutableList<in T>) {
 }
 
 class OutAnimaBox<out T>(private val elements: MutableList<out T>) {
-    //    fun add(t: T) = elements.add(t) // 编译错误,协变不支持输入
+//        fun add(t: T) = elements.add(t) // 编译错误,协变不支持输入
     fun first(): T = elements.first()
 }
 

@@ -1,6 +1,7 @@
 package com.test.kotlin.kotlintest
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -9,6 +10,7 @@ import android.widget.Toast
 import com.test.kotlin.kotlintest.test.common.Constants
 import com.test.kotlin.kotlintest.test.common.extend
 import com.test.kotlin.kotlintest.test.common.test.*
+import com.test.kotlin.kotlintest.test.common.test.bean.User
 import com.test.kotlin.kotlintest.test.common.test.java.JavaTest
 import com.test.kotlin.kotlintest.test.common.test.java.JavaUser
 import kotlinx.android.synthetic.main.activity_main.*
@@ -57,7 +59,12 @@ class MainActivity : AppCompatActivity() {
             JavaTest().test()
         }
 
-        koinTest.setOnClickListener {
+        extrasTest.setOnClickListener {
+            val intent = Intent(this@MainActivity, ExtrasActivity::class.java)
+            val u = User("Tony", 19)
+            intent.putExtra("user", u)
+            intent.putExtra("string", "just a test")
+            startActivity(intent)
         }
 
         genericityTest.setOnClickListener {

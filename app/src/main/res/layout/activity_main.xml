@@ -61,11 +61,11 @@
             android:text="javaTest" />
 
         <TextView
-            android:id="@+id/koinTest"
+            android:id="@+id/extrasTest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="koinTest" />
+            android:text="extrasTest" />
 
         <TextView
             android:id="@+id/genericityTest"

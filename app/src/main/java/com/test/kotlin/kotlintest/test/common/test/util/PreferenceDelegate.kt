@@ -6,7 +6,7 @@ import android.util.Log
 import com.test.kotlin.kotlintest.test.common.Constants
 import kotlin.reflect.KProperty
 
-class PreferenceProxy<T>(private val context: Context, val name: String, private val default: T) {
+class PreferenceDelegate<T>(private val context: Context, val name: String, private val default: T) {
 
     private val prefs: SharedPreferences by lazy { context.getSharedPreferences("SP", Context.MODE_PRIVATE) }
 
@@ -15,7 +15,7 @@ class PreferenceProxy<T>(private val context: Context, val name: String, private
     operator fun setValue(thisRef: Any?, property: KProperty<*>, value: T) = putSharedPreferences(name, value)
 
     private fun putSharedPreferences(name: String, value: T) = with(prefs.edit()) {
-        Log.d(Constants.TAG, "PreferenceProxy putSharedPreferences:$name,$value")
+        Log.d(Constants.TAG, "PreferenceDelegate putSharedPreferences:$name,$value")
         when (value) {
             is Int -> putInt(name, value)
             is Float -> putFloat(name, value)
@@ -35,7 +35,7 @@ class PreferenceProxy<T>(private val context: Context, val name: String, private
             is String -> getString(name, default)
             else -> throw IllegalArgumentException("SharedPreference can't be get this type")
         }
-        Log.d(Constants.TAG, "PreferenceProxy getSharedPreferences:$name,$res")
+        Log.d(Constants.TAG, "PreferenceDelegate getSharedPreferences:$name,$res")
         return res as T
     }
 }
