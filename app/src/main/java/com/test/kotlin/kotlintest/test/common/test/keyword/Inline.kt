@@ -38,11 +38,11 @@ class Inline {
 
         foo({
             Log.d(Constants.TAG, "inlined call ")
-            //            return  //正确 内联函数可以代替外部函数返回
-        }, {
+            return  //正确 内联函数可以代替外部函数返回
+        }) {
             Log.d(Constants.TAG, "notInlined call ")
-            //return  //错误 noinline 为内联函数增加非内联部分
-        })
+//            return  //错误 noinline 为内联函数增加非内联部分
+        }
 
         Log.d(Constants.TAG, "outerFun finish")
     }
@@ -64,8 +64,9 @@ class Inline {
     }
 
     //noinline 为内联函数增加非内联部分
-    private inline fun foo(inlined: () -> Unit, noinline notInlined: () -> Unit) {
-        //do some thing
+    private inline fun foo(a: () -> Unit, noinline b: () -> Unit) {
+        a()
+        b()
     }
 
     /******************* reified *******************/

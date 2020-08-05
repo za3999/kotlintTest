@@ -28,7 +28,7 @@ class With {
             User("郑小才", 19).testApply {
                 Log.d(Constants.TAG, "testApply:$name,$age")
             }
-            var result1 = User("郑小才", 19).testBlockReturn {
+            var result1 = testBlockReturn {
                 "aaa"
             }
             Log.d(Constants.TAG, "result1:$result1")

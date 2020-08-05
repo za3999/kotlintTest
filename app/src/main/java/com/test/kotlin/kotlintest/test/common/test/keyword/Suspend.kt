@@ -115,20 +115,20 @@ class Suspend {
 
     fun testSuspendAsync() {
         launch(UI) {
-            async {
-                Log.d(Constants.TAG, "async finish:$it, ${Thread.currentThread()}")
+            async { s: String, b: Boolean ->
+                Log.d(Constants.TAG, "async finish:$s,$b, ${Thread.currentThread()}")
             }
         }
     }
 
-    suspend fun async(callback: (String) -> Unit) {
+    suspend fun async(callback: (String, Boolean) -> Unit) {
         val job = async(CommonPool) {
             Log.d(Constants.TAG, "async job start,${Thread.currentThread()}")
             delay(500)
             Log.d(Constants.TAG, "async job end,${Thread.currentThread()}")
-            "result"
+            "result ssssss"
         }
-        callback(job.await())
+        callback(job.await(), true)
     }
 
 }
