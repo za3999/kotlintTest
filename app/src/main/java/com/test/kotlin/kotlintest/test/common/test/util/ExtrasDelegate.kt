@@ -3,9 +3,9 @@ package com.test.kotlin.kotlintest.test.common.test.util
 import android.os.Bundle
 import android.os.IBinder
 import android.os.Parcelable
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.test.kotlin.kotlintest.test.common.Constants
 import java.io.Serializable
 import kotlin.reflect.KProperty

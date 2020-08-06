@@ -1,8 +1,8 @@
 package com.test.kotlin.kotlintest
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.test.kotlin.kotlintest.test.common.Constants
 import com.test.kotlin.kotlintest.test.common.test.bean.User
 import com.test.kotlin.kotlintest.test.common.test.util.ExtrasDelegate

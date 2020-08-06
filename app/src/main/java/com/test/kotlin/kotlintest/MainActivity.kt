@@ -3,16 +3,17 @@ package com.test.kotlin.kotlintest
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.test.kotlin.kotlintest.test.common.Constants
 import com.test.kotlin.kotlintest.test.common.extend
 import com.test.kotlin.kotlintest.test.common.test.*
 import com.test.kotlin.kotlintest.test.common.test.bean.User
 import com.test.kotlin.kotlintest.test.common.test.java.JavaTest
 import com.test.kotlin.kotlintest.test.common.test.java.JavaUser
+import com.test.kotlin.kotlintest.test.common.test.jetpack.JetPackActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,11 +26,7 @@ class MainActivity : AppCompatActivity() {
         val test = Person(this, Constants.PACKAGE_NAME + "小王", 1234)
         test.sex = "男"
         rotationIv.setOnClickListener {
-            it.animate().rotation(if (isPositive) {
-                90f
-            } else {
-                0f
-            }).setDuration(200).setInterpolator(OvershootInterpolator()).start()
+            it.animate().rotation(if (isPositive) 90f else 0f).setDuration(200).setInterpolator(OvershootInterpolator()).start()
             isPositive = !isPositive
         }
 
@@ -60,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         extrasTest.setOnClickListener {
-            val intent = Intent(this@MainActivity, ExtrasActivity::class.java)
+            val intent = Intent(it.context, ExtrasActivity::class.java)
             val u = User("Tony", 19)
             intent.putExtra("user", u)
             intent.putExtra("string", "just a test")
@@ -69,6 +66,9 @@ class MainActivity : AppCompatActivity() {
 
         genericityTest.setOnClickListener {
             GenericityTest.test()
+        }
+        jetpackTest.setOnClickListener {
+            startActivity(Intent(it.context, JetPackActivity::class.java))
         }
     }
 }

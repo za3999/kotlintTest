@@ -2,8 +2,9 @@ package com.test.kotlin.kotlintest.test.common.test.keyword
 
 import android.util.Log
 import com.test.kotlin.kotlintest.test.common.Constants
-import kotlinx.coroutines.experimental.*
-import kotlinx.coroutines.experimental.android.UI
+import com.test.kotlin.kotlintest.test.common.test.bean.User
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,7 +24,7 @@ class Suspend {
     }
 
     fun testCancel() {
-        val job = launch {
+        val job = GlobalScope.launch {
             var i = 0
             while (i < 1000 && isActive) {
                 Log.d(Constants.TAG, "${time.format(Date())}  I'm sleeping $i ...")
@@ -62,7 +63,7 @@ class Suspend {
     fun testContext() {
         runBlocking {
             val jobs = arrayListOf<Job>()
-            jobs.add(launch(Unconfined) {
+            jobs.add(launch(Dispatchers.IO) {
                 Log.d(Constants.TAG, "'Unconfined': I'm working in thread ${Thread.currentThread()}")
                 delay(500)
                 Log.d(Constants.TAG, "'Unconfined': after I'm working in thread ${Thread.currentThread()}")
@@ -72,7 +73,7 @@ class Suspend {
                 delay(500)
                 Log.d(Constants.TAG, "'coroutineContext': after I'm working in thread ${Thread.currentThread()}")
             })
-            jobs.add(launch(CommonPool) {
+            jobs.add(launch(Dispatchers.IO) {
                 Log.d(Constants.TAG, "'CommonPool': I'm working in thread ${Thread.currentThread()}")
                 delay(500)
                 Log.d(Constants.TAG, "'CommonPool': after I'm working in thread ${Thread.currentThread()}")
@@ -89,9 +90,9 @@ class Suspend {
     }
 
     fun testWithContext() {
-        val job = launch(newSingleThreadContext("ctx1")) {
+        val job = GlobalScope.launch(newSingleThreadContext("ctx1")) {
             Log.d(Constants.TAG, "'ctx1 ${Thread.currentThread()}")
-            withContext(CommonPool) {
+            withContext(Dispatchers.IO) {
                 Log.d(Constants.TAG, "'ctx2 ${Thread.currentThread()}")
             }
             Log.d(Constants.TAG, "'ctx3 ${Thread.currentThread()}")
@@ -104,7 +105,7 @@ class Suspend {
 
     fun testAsync() {
         runBlocking {
-            val job = async(CommonPool) {
+            val job = async(Dispatchers.IO) {
                 Log.d(Constants.TAG, "testAsync job")
                 delay(500)
                 "result"
@@ -114,7 +115,7 @@ class Suspend {
     }
 
     fun testSuspendAsync() {
-        launch(UI) {
+        GlobalScope.launch(Dispatchers.Main) {
             async { s: String, b: Boolean ->
                 Log.d(Constants.TAG, "async finish:$s,$b, ${Thread.currentThread()}")
             }
@@ -122,13 +123,15 @@ class Suspend {
     }
 
     suspend fun async(callback: (String, Boolean) -> Unit) {
-        val job = async(CommonPool) {
+        val job = GlobalScope.async(Dispatchers.IO) {
             Log.d(Constants.TAG, "async job start,${Thread.currentThread()}")
             delay(500)
             Log.d(Constants.TAG, "async job end,${Thread.currentThread()}")
-            "result ssssss"
+            "result"
         }
         callback(job.await(), true)
+        var c = User("张三", 5)
+        callback(c.name, false)
     }
 
 }
