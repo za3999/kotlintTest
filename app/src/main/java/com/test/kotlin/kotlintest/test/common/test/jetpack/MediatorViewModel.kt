@@ -6,7 +6,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.test.kotlin.kotlintest.test.common.test.bean.User
 
-class TestViewModel(application: Application) : AndroidViewModel(application) {
+class MediatorViewModel(application: Application) : AndroidViewModel(application) {
 
     val users1: MutableLiveData<MutableList<User>> by lazy {
         var liveData = MutableLiveData<MutableList<User>>()

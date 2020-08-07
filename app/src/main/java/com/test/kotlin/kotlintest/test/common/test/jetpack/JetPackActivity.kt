@@ -11,18 +11,22 @@ import kotlinx.android.synthetic.main.activity_jetpack.*
 
 class JetPackActivity : AppCompatActivity() {
 
-    lateinit var model: TestViewModel
+    private lateinit var mediatorModel: MediatorViewModel
+    private lateinit var mutableModel: MutableViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jetpack)
-        model = ViewModelProvider.AndroidViewModelFactory(application).create(TestViewModel::class.java)
+        mediatorModel = ViewModelProvider.AndroidViewModelFactory(application).create(MediatorViewModel::class.java)
         initLiveData()
-        addUserTest.setOnClickListener { model.test() }
+        mutableModel = ViewModelProvider.AndroidViewModelFactory(application).create(MutableViewModel::class.java)
+        mutableModel.users.observe(this, Observer { Log.d(Constants.TAG, "mutableModel size:${it}") })
+        mediatorTest.setOnClickListener { mediatorModel.test() }
+        mutableTest.setOnClickListener { mutableModel.test() }
     }
 
     private fun initLiveData() {
-        model.apply {
+        mediatorModel.apply {
             userModels.addSource(users1, Observer {
                 userModels.value = it
             })
@@ -32,7 +36,7 @@ class JetPackActivity : AppCompatActivity() {
             }
 
             userModels.observe(this@JetPackActivity, Observer {
-                Log.d(Constants.TAG, "size:${it}")
+                Log.d(Constants.TAG, "mediatorModel size:${it}")
             })
         }
     }
