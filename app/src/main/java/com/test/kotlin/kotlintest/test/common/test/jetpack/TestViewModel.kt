@@ -2,22 +2,32 @@ package com.test.kotlin.kotlintest.test.common.test.jetpack
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.test.kotlin.kotlintest.test.common.test.bean.User
 
 class TestViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val users: MutableLiveData<List<User>> by lazy {
-        MutableLiveData<List<User>>()
+    val users1: MutableLiveData<MutableList<User>> by lazy {
+        var liveData = MutableLiveData<MutableList<User>>()
+        liveData.value = mutableListOf()
+        liveData
+    }
+    val users2: MutableLiveData<MutableList<User>> by lazy {
+        var liveData = MutableLiveData<MutableList<User>>()
+        liveData.value = mutableListOf()
+        liveData
     }
 
-    fun getUsers(): LiveData<List<User>> {
-        return users
-    }
+    var userModels = MediatorLiveData<MutableList<User>>()
 
-    private fun loadUsers() {
+    fun test() {
+        users1.value = users1.value.also {
+            it?.add(User("user1:小王", 20))
+        }
 
+        users2.value = users2.value.also {
+            it?.add(User("user2:小李", 20))
+        }
     }
 }
-
