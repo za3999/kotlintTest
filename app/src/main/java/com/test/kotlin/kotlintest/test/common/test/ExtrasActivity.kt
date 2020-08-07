@@ -1,4 +1,4 @@
-package com.test.kotlin.kotlintest
+package com.test.kotlin.kotlintest.test.common.test
 
 import android.os.Bundle
 import android.util.Log
