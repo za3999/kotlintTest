@@ -1,18 +1,36 @@
 package com.lib.recycler
 
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class BaseViewHolder<T>(itemView: View, var clickable: Boolean = false, var longClickable: Boolean = false) : RecyclerView.ViewHolder(itemView) {
+abstract class BaseViewHolder<T>(var itemView: View, var clickEnable: Boolean, var longEnable: Boolean) : RecyclerView.ViewHolder(itemView) {
 
-    private var itemClick: ClickListener<View, T>? = null
-    private var itemLongClick: ClickListener<View, T>? = null
+    lateinit var itemClick: (View, T) -> Unit?
+    lateinit var itemLongClick: (View, T) -> Unit?
     private var itemData: T? = null
 
+    constructor(itemView: View) : this(itemView, true, false)
+    constructor(itemView: View, clickEnable: Boolean) : this(itemView, clickEnable, false)
 
+    init {
+        if (clickEnable) {
+        }
+        if (longEnable) {
 
-    interface ClickListener<View, in T> {
-        fun onItemClick(view: View, t: T)
+        }
     }
+
+    fun onAttachedToWindow() {}
+
+    fun onDetachedFromWindow() {}
+
+    fun onBindData(position: Int, data: T) {
+        itemData = data
+        bindData(position, data)
+    }
+
+    abstract fun bindData(position: Int, t: T)
+    abstract fun initView(itemView: View)
 
 }
