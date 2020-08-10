@@ -2,6 +2,7 @@ package com.test.kotlin.kotlintest.test.common.test.jetpack
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,8 +22,14 @@ class JetPackActivity : AppCompatActivity() {
         initLiveData()
         mutableModel = ViewModelProvider.AndroidViewModelFactory(application).create(MutableViewModel::class.java)
         mutableModel.users.observe(this, Observer { Log.d(Constants.TAG, "mutableModel size:${it}") })
-        mediatorTest.setOnClickListener { mediatorModel.test() }
-        mutableTest.setOnClickListener { mutableModel.test() }
+        mediatorTest.setOnClickListener {
+            mediatorModel.test()
+            mediatorModel.makeNetworkRequest()
+            Toast.makeText(applicationContext, "run Main after", Toast.LENGTH_LONG).show()
+        }
+        mutableTest.setOnClickListener {
+            mutableModel.test()
+        }
     }
 
     private fun initLiveData() {
