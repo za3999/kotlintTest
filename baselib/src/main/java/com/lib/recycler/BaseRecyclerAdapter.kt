@@ -21,10 +21,12 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>(
     }
 
     fun onDetachedAllFromWindow() {
-        val count = mRecyclerView?.childCount
-        for (i in 0 until count) {
-            val holder: BaseViewHolder<T> = mRecyclerView.getChildViewHolder(mRecyclerView.getChildAt(i)) as BaseViewHolder<T>
-            holder.onDetachedFromWindow()
+        mRecyclerView?.let {
+            val count = it.childCount
+            for (i in 0 until count) {
+                val holder: BaseViewHolder<T> = mRecyclerView.getChildViewHolder(mRecyclerView.getChildAt(i)) as BaseViewHolder<T>
+                holder.onDetachedFromWindow()
+            }
         }
     }
 
