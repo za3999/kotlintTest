@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.recycler_view_layout.*
 
 fun createTextHolderView(parent: ViewGroup, height: Int): View {
     val view = TextView(parent.context)
-    view.setBackgroundColor(ContextCompat.getColor(parent.context, R.color.color_ff333333_ffffffff))
     view.layoutParams = AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height)
     return view
 }
