@@ -28,11 +28,11 @@ abstract class BaseViewHolder<T>(view: View, clickEnable: Boolean = true, longEn
         onItemClick(v, itemData)
     }
 
-    fun onItemClick(v: View, t: T?) {
+    open fun onItemClick(v: View, t: T?) {
         itemClick(v, t)
     }
 
-    fun onItemLongClick(v: View, t: T) {
+    open fun onItemLongClick(v: View, t: T) {
         itemLongClick(v, t)
     }
 

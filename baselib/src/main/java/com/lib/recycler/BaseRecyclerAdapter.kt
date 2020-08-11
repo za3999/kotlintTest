@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
     private val result: MutableList<T> = mutableListOf()
-    lateinit var mRecyclerView: RecyclerView
+    private lateinit var mRecyclerView: RecyclerView
     lateinit var itemClick: (Int, View, T?) -> Unit?
     lateinit var itemLongClick: (Int, View, T?) -> Unit?
 
@@ -21,7 +21,7 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>(
     }
 
     fun onDetachedAllFromWindow() {
-        val count = mRecyclerView.childCount
+        val count = mRecyclerView?.childCount
         for (i in 0 until count) {
             val holder: BaseViewHolder<T> = mRecyclerView.getChildViewHolder(mRecyclerView.getChildAt(i)) as BaseViewHolder<T>
             holder.onDetachedFromWindow()
@@ -84,11 +84,11 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>(
         return if (position < result.size) result[position] else null
     }
 
-    fun onItemClick(position: Int, v: View, item: T?) {
+    open fun onItemClick(position: Int, v: View, item: T?) {
         itemClick?.invoke(position, v, item)
     }
 
-    fun onItemLongClick(position: Int, v: View, item: T?) {
+    open fun onItemLongClick(position: Int, v: View, item: T?) {
         itemLongClick?.invoke(position, v, item)
     }
 
