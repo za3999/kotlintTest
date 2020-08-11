@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
     private val result: MutableList<T> = mutableListOf()
-    private lateinit var mRecyclerView: RecyclerView
+    lateinit var mRecyclerView: RecyclerView
     lateinit var itemClick: (Int, View, T?) -> Unit?
     lateinit var itemLongClick: (Int, View, T?) -> Unit?
 

@@ -1,5 +1,6 @@
 package com.test.kotlin.kotlintest.test.common
 
+import android.content.res.Resources
 import android.util.Log
 import com.test.kotlin.kotlintest.test.common.test.bean.C
 import com.test.kotlin.kotlintest.test.common.test.ClassTest
@@ -36,3 +37,21 @@ fun <T, R> KProperty1<T, R>.getUnsafed(receiver: Any): R {
 inline fun <reified T : Any> T.description1() = this::class.memberProperties.joinToString(";") {
     "${it.name}: ${it.getUnsafed(this)}"
 }
+
+val Float.dp: Float
+    get() = android.util.TypedValue.applyDimension(
+            android.util.TypedValue.COMPLEX_UNIT_DIP, this, Resources.getSystem().displayMetrics)
+
+val Int.dp: Int
+    get() = android.util.TypedValue.applyDimension(
+            android.util.TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics).toInt()
+
+
+val Float.sp: Float
+    get() = android.util.TypedValue.applyDimension(
+            android.util.TypedValue.COMPLEX_UNIT_SP, this, Resources.getSystem().displayMetrics)
+
+
+val Int.sp: Int
+    get() = android.util.TypedValue.applyDimension(
+            android.util.TypedValue.COMPLEX_UNIT_SP, this.toFloat(), Resources.getSystem().displayMetrics).toInt()

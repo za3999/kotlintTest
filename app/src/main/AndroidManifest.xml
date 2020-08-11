@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".test.common.test.ExtrasActivity" />
+        <activity android:name=".test.common.test.ListActivity" />
     </application>
 
 </manifest>

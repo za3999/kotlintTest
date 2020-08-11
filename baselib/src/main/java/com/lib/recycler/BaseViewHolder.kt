@@ -13,12 +13,12 @@ abstract class BaseViewHolder<T>(view: View, clickEnable: Boolean = true, longEn
         initView(view)
         if (clickEnable) {
             view.setOnClickListener {
-                itemClick(it, itemData)
+                onItemClick(it, itemData)
             }
         }
         if (longEnable) {
             view.setOnLongClickListener {
-                itemLongClick(it, itemData)
+                onItemLongClick(it, itemData)
                 true
             }
         }
@@ -32,7 +32,7 @@ abstract class BaseViewHolder<T>(view: View, clickEnable: Boolean = true, longEn
         itemClick(v, t)
     }
 
-    open fun onItemLongClick(v: View, t: T) {
+    open fun onItemLongClick(v: View, t: T?) {
         itemLongClick(v, t)
     }
 

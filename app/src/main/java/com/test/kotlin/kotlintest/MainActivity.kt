@@ -70,6 +70,10 @@ class MainActivity : AppCompatActivity() {
         jetpackTest.setOnClickListener {
             startActivity(Intent(it.context, JetPackActivity::class.java))
         }
+
+        listTest.setOnClickListener {
+            startActivity(Intent(it.context, ListActivity::class.java))
+        }
     }
 }
 
