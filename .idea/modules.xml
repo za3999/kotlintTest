@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-kotlintTest.iml" filepath="$PROJECT_DIR$/.idea/modules/github-kotlintTest.iml" group="kotlintTest" />
       <module fileurl="file://$PROJECT_DIR$/kotlintTest.iml" filepath="$PROJECT_DIR$/kotlintTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/kotlintTest-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/kotlintTest-app.iml" group="kotlintTest/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baselib/kotlintTest-baselib.iml" filepath="$PROJECT_DIR$/.idea/modules/baselib/kotlintTest-baselib.iml" group="kotlintTest/baselib" />
     </modules>
   </component>
 </project>
