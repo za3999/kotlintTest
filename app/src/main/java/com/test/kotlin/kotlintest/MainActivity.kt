@@ -7,6 +7,7 @@ import android.view.animation.OvershootInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.test.kotlin.kotlintest.test.common.Constants
 import com.test.kotlin.kotlintest.test.common.extend
+import com.test.kotlin.kotlintest.test.common.motionlayout.MotionLayoutActivity
 import com.test.kotlin.kotlintest.test.common.test.*
 import com.test.kotlin.kotlintest.test.common.test.bean.User
 import com.test.kotlin.kotlintest.test.common.test.java.JavaTest
@@ -79,6 +80,9 @@ class MainActivity : AppCompatActivity() {
 
         listTest.setOnClickListener {
             startActivity(Intent(it.context, ListActivity::class.java))
+        }
+        motionTest.setOnClickListener {
+            startActivity(Intent(it.context, MotionLayoutActivity::class.java))
         }
     }
 }
